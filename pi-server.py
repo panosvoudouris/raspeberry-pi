@@ -10,8 +10,10 @@ sense.low_light = True
 
 urls = (
 	'/', 'index',
-	'/temp', 'temp',
+	'/temperature', 'temp',
 	'/humidity', 'humidity',
+    '/pressure', 'index',
+    '/orientation', 'index',
 	'/show', 'show',
 	'/camera', 'camera'
 )
