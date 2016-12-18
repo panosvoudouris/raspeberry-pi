@@ -40,27 +40,12 @@ class humidity:
 
 class show:
 	def POST(self):
-        self.response.headers.add_header('Access-Control-Allow-Origin', '*')
-        self.response.headers['Content-Type'] = 'application/json'
-    	data = web.input()
+		data = json.loads(web.data())
+		print data
 		scrollspeed = 0.1
 		if 'speed' in data :
-			scrollspeed = float(data.speed)
-		sense.show_message(data.message, scrollspeed)
-
-#class camera:
-#	def GET(self):
-		#my_stream = io.BytesIO()
-		#with picamera.PiCamera() as camera:
-		#camera.start_preview()
-		# Camera warm-up time
-		#time.sleep(2)
-		#camera.capture(my_stream, 'jpeg')
-		#camera.stop_preview()
-		#web.header('Access-Control-Allow-Origin', '*')
-		#web.header('Access-Control-Allow-Credentials', 'true')
-		#web.header( 'Content-Type', 'images/jpeg' )
-		#return json.dumps( result )
+			scrollspeed = float(data['speed'])
+		sense.show_message(data['message'], scrollspeed)
 
 if __name__ == "__main__":
     app = web.application(urls, globals())
