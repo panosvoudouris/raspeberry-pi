@@ -40,7 +40,9 @@ class humidity:
 
 class show:
 	def POST(self):
-		data = web.input()
+        self.response.headers.add_header('Access-Control-Allow-Origin', '*')
+        self.response.headers['Content-Type'] = 'application/json'
+    	data = web.input()
 		scrollspeed = 0.1
 		if 'speed' in data :
 			scrollspeed = float(data.speed)
