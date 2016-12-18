@@ -24,7 +24,7 @@ class index:
 
 class temp:
 	def GET(self):
-		result = { 'temperature': sense.get_temperature_from_pressure() }
+		result = { 'data': sense.get_temperature_from_pressure() }
 		web.header('Access-Control-Allow-Origin', '*')
 		web.header('Access-Control-Allow-Credentials', 'true')
 		web.header( 'Content-Type', 'application/json' )
@@ -32,7 +32,7 @@ class temp:
 
 class humidity:
 	def GET(self):
-		result = { 'humidity': sense.humidity }
+		result = { 'data': sense.humidity }
 		web.header('Access-Control-Allow-Origin', '*')
 		web.header('Access-Control-Allow-Credentials', 'true')
 		web.header( 'Content-Type', 'application/json' )
