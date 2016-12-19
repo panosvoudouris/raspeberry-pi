@@ -12,9 +12,10 @@ urls = (
 	'/', 'index',
 	'/temperature', 'temp',
 	'/humidity', 'humidity',
-    '/pressure', 'index',
-    '/orientation', 'index',
+	'/pressure', 'index',
+	'/orientation', 'index',
 	'/show', 'show',
+	'/matrix', 'matrix',
 	'/camera', 'camera'
 )
 
@@ -46,6 +47,13 @@ class show:
 		if 'speed' in data :
 			scrollspeed = float(data['speed'])
 		sense.show_message(data['message'], scrollspeed)
+
+class matrix:
+	def POST(self):
+		data = json.loads(web.data())
+		print data
+		sense.set_pixels(data['matrix'])
+
 
 if __name__ == "__main__":
     app = web.application(urls, globals())
